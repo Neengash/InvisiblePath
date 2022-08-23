@@ -2,36 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CellType
-{
-    EMPTY,
-    ALWAYS,
-    MIRROR,
-    HOLE,
-    ROTATION,
-}
-
-public enum CellTypeDetailed
-{
-    EMPTY,
-    ALWAYS_TOP,
-    ALWAYS_RIGHT,
-    ALWAYS_BOT,
-    ALWAYS_LEFT,
-    MIRROR_UP,
-    MIRROR_DOWN,
-    HOLE,
-    ROTATION_CLOCK,
-    ROTATION_COUTNERCLOCK,
-}
 public class CellData
 {
-    public const int
-        TOP = 0,
-        RIGHT = 1,
-        BOT = 2,
-        LEFT = 3;
-
     public CellTypeDetailed type;
     public bool[] canEnter;
 
