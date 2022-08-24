@@ -1,13 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameLoader : MonoBehaviour
 {
+    GameCell[][] gameBoard;
+
+    [SerializeField] TextMeshProUGUI player1Score, player2Score;
+    [SerializeField] GameObject player1Turn, player2Turn;
+
+
+
     void Start()
     {
-        CellData[][] board = Board.Generate();
-        PrintBoard(board);
+        CellData[][] boardData = BoardData.Generate();
+        PrintBoard(boardData); // TMP
+
+        gameBoard = GameBoard.Generate(boardData);
         // Create Board
         // Reset Score Counters
         // Assign turn to player 1

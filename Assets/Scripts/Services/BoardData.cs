@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Board
+public class BoardData
 {
     public const int BOARD_SIZE = 6;
     public static CellData[][] Generate() {

@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Action
 {
-    ActionType type;
-    Vector3 vector;
+    public ActionType type;
+    public Direction direction;
+    public bool score;
 }
