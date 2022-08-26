@@ -1,18 +1,18 @@
 public class HoleCell : GameCell
 {
     public override Action EnterBot() {
-        return EndAction();
+        return new Action(ActionType.END, Direction.TOP, isScore);
     }
 
     public override Action EnterLeft() {
-        return EndAction();
+        return new Action(ActionType.END, Direction.TOP, isScore);
     }
 
     public override Action EnterRight() {
-        return EndAction();
+        return new Action(ActionType.END, Direction.TOP, isScore);
     }
 
     public override Action EnterTop() {
-        return EndAction();
+        return new Action(ActionType.END, Direction.TOP, isScore);
     }
 }

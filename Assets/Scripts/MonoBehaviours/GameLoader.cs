@@ -8,18 +8,14 @@ public class GameLoader : MonoBehaviour
 {
     GameCell[][] gameBoard;
 
-    [SerializeField] TextMeshProUGUI player1Score, player2Score;
-    [SerializeField] GameObject player1Turn, player2Turn;
-
-
-
     void Start()
     {
         CellData[][] boardData = BoardData.Generate();
         PrintBoard(boardData); // TMP
 
         gameBoard = GameBoard.Generate(boardData);
-        // Create Board
+
+        ScoreManager.Instance.ResetScores();
         // Reset Score Counters
         // Assign turn to player 1
         // Load IA or Player 2 (depending on game config) - GAME PLAY MANAGER?

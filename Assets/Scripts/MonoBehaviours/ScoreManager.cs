@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Feto;
 
-public class ScoreManager : MonoBehaviour
+public class ScoreManager : Singleton<ScoreManager>
 {
     int p1Score, p2Score;
     [SerializeField] TextMeshProUGUI p1ScoreText, p2ScoreText;

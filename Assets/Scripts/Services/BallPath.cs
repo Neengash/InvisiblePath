@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class BallPath
 {
-    public static void Calculate(CellData[][] board, int x, int y, Direction direction) {
+    public static List<Action> Calculate(CellData[][] board, int x, int y, Direction direction) {
+        List<Action> actions = new List<Action>();
+        actions.Add(new Action(ActionType.SPAWN));
         // Advance 1 position in board
         // Check reaction in current position
         // If END --> Return
@@ -19,5 +21,6 @@ public class BallPath
         // Ending position (scale down)
         //
         // Action = "ActionType" [ScaleUp/ScaleDown/Translate] + Vector3D
+        return actions;
     }
 }

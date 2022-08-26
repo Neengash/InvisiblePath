@@ -8,6 +8,8 @@ public class Arrow : MonoBehaviour
     public Direction direction;
 
     public void ArrowClicked() {
+        // Load Path from spot
+        // Play Animation for ball
         Debug.Log($"Clicked on {X} - {Y} looking {direction}");
     }
 }
