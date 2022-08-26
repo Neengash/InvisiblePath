@@ -5,14 +5,16 @@ using UnityEngine;
 public class CellData
 {
     public CellTypeDetailed type;
-    public bool[] canEnter;
+    public Dictionary<Direction, bool> canEnter;
 
     public CellData() {
         this.type = CellTypeDetailed.EMPTY;
-        canEnter = new bool[4];
-        for (int i = 0; i < canEnter.Length; i++) {
-            canEnter[i] = true;
-        }
+        canEnter = new Dictionary<Direction, bool>();
+
+        canEnter.Add(Direction.TOP, true);
+        canEnter.Add(Direction.RIGHT, true);
+        canEnter.Add(Direction.BOT, true);
+        canEnter.Add(Direction.LEFT, true);
     }
 
     public CellType GetCellType() {

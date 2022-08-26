@@ -28,16 +28,16 @@ public class BoardData
     }
 
     private static void PopulateRows(ref CellData[][] board) {
-        for (int i = 0; i < board.Length; i++) {
+        for (int j = 0; j < board.Length; j++) {
             int column = Random.Range(0, BOARD_SIZE);
-            PopulateCell(ref board, i, column);
+            PopulateCell(ref board, column, j);
         }
     }
 
     private static void PopulateColumns(ref CellData[][] board) {
-        for (int j = 0; j < board.Length; j++) {
+        for (int i = 0; i < board.Length; i++) {
             int row = Random.Range(0, BOARD_SIZE);
-            PopulateCell(ref board, row, j);
+            PopulateCell(ref board, i, row);
         }
     }
 
@@ -101,20 +101,20 @@ public class BoardData
                 break;
                 // top, right, bot to false
             case CellTypeDetailed.MIRROR_UP:
-                if (!board[i][j].canEnter[(int)Direction.LEFT]) { SetTopToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.TOP]) { SetLeftToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.BOT]) { SetRightToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.RIGHT]) { SetBotToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.LEFT]) { SetTopToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.TOP]) { SetLeftToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.BOT]) { SetRightToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.RIGHT]) { SetBotToFalse(ref board, i, j); }
                 break;
                 // top to false if current left is false
                 // left to false if current top is false
                 // right to false if current bot is false
                 // bot to false if current right is false
             case CellTypeDetailed.MIRROR_DOWN:
-                if (!board[i][j].canEnter[(int)Direction.RIGHT]) { SetTopToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.TOP]) { SetRightToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.BOT]) { SetLeftToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.LEFT]) { SetBotToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.RIGHT]) { SetTopToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.TOP]) { SetRightToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.BOT]) { SetLeftToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.LEFT]) { SetBotToFalse(ref board, i, j); }
                 break;
                 // top to false if current right is false
                 // right to false if current top if false
@@ -128,42 +128,42 @@ public class BoardData
                 break;
                 // All to false
             case CellTypeDetailed.ROTATION_CLOCK:
-                if (!board[i][j].canEnter[(int)Direction.TOP]) { SetLeftToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.RIGHT]) { SetTopToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.BOT]) { SetRightToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.LEFT]) { SetBotToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.TOP]) { SetLeftToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.RIGHT]) { SetTopToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.BOT]) { SetRightToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.LEFT]) { SetBotToFalse(ref board, i, j); }
                 break;
                 // X to false if previous (clock) is false
             case CellTypeDetailed.ROTATION_COUTNERCLOCK:
                 // X to false if next (clock) is false
-                if (!board[i][j].canEnter[(int)Direction.BOT]) { SetLeftToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.LEFT]) { SetTopToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.TOP]) { SetRightToFalse(ref board, i, j); }
-                if (!board[i][j].canEnter[(int)Direction.RIGHT]) { SetBotToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.BOT]) { SetLeftToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.LEFT]) { SetTopToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.TOP]) { SetRightToFalse(ref board, i, j); }
+                if (!board[i][j].canEnter[Direction.RIGHT]) { SetBotToFalse(ref board, i, j); }
                 break;
         }
     }
 
     private static void SetTopToFalse(ref CellData[][] board, int i, int j) {
-        SetToFalse(ref board, i, j - 1, (int)Direction.BOT);
+        SetToFalse(ref board, i, j - 1, Direction.BOT);
     }
 
     private static void SetRightToFalse(ref CellData[][] board, int i, int j) {
-        SetToFalse(ref board, i + 1, j, (int)Direction.LEFT);
+        SetToFalse(ref board, i + 1, j, Direction.LEFT);
     }
 
     private static void SetBotToFalse(ref CellData[][] board, int i, int j) {
-        SetToFalse(ref board, i, j + 1, (int)Direction.TOP);
+        SetToFalse(ref board, i, j + 1, Direction.TOP);
     }
 
     private static void SetLeftToFalse(ref CellData[][] board, int i, int j) {
-        SetToFalse(ref board, i - 1, j, (int)Direction.RIGHT);
+        SetToFalse(ref board, i - 1, j, Direction.RIGHT);
     }
 
-    private static void SetToFalse(ref CellData[][] board, int i, int j, int position) {
+    private static void SetToFalse(ref CellData[][] board, int i, int j, Direction direction) {
         if (i < 0 || i >= BOARD_SIZE || j < 0 || j >= BOARD_SIZE) {
             return;
         }
-        board[i][j].canEnter[position] = false;
+        board[i][j].canEnter[direction] = false;
     }   
 }

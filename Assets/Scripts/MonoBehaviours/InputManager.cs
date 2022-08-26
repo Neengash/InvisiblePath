@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
     [SerializeField] Camera mainCamera;
 
     private void Update() {
-        if (Input.GetAxis("Fire1") > 0) {
+        if (Input.GetMouseButtonDown(0)) {
             RaycastHit hit;
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit)) {

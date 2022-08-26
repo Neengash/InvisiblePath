@@ -6,7 +6,7 @@ public class Action
     public Direction direction;
     public bool score;
 
-    public Action(ActionType type, Direction direction = Direction.TOP, bool score = false) {
+    public Action(ActionType type, Direction direction = Direction.NONE, bool score = false) {
         this.type = type;
         this.direction = direction;
         this.score = score;

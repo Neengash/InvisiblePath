@@ -53,10 +53,10 @@ public class GameBoard
         }
 
         if (
-            !cellData.canEnter[(int)Direction.TOP] &&
-            !cellData.canEnter[(int)Direction.RIGHT] &&
-            !cellData.canEnter[(int)Direction.BOT] &&
-            !cellData.canEnter[(int)Direction.LEFT]
+            !cellData.canEnter[Direction.TOP] &&
+            !cellData.canEnter[Direction.RIGHT] &&
+            !cellData.canEnter[Direction.BOT] &&
+            !cellData.canEnter[Direction.LEFT]
         ) {
             cell.isIsolated = true;
         }

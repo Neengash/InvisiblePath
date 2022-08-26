@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+using Feto;
 
-public class GameLoader : MonoBehaviour
+public class GameLoader : Singleton<GameLoader>
 {
-    GameCell[][] gameBoard;
+    public GameCell[][] gameBoard;
 
     void Start()
     {
@@ -14,6 +14,7 @@ public class GameLoader : MonoBehaviour
         PrintBoard(boardData); // TMP
 
         gameBoard = GameBoard.Generate(boardData);
+        //PrintGameBoard(gameBoard);
 
         ScoreManager.Instance.ResetScores();
         // Reset Score Counters
@@ -31,9 +32,29 @@ public class GameLoader : MonoBehaviour
         for (int i = 0; i < board.Length; i++) {
             for (int j = 0; j < board.Length; j++) {
                 rows[j] += board[i][j].type.ToString();
+                rows[j] += " - ";
             }
         }
 
+        Debug.Log("BoardData");
+        for (int i = 0; i < board.Length; i++) {
+            Debug.Log(rows[i]);
+        }
+    }
+    private void PrintGameBoard(GameCell[][] board) {
+        string[] rows = new string[board.Length];
+        for (int i = 0; i < board.Length; i++) {
+            rows[i] = "";
+        }
+
+        for (int i = 0; i < board.Length; i++) {
+            for (int j = 0; j < board.Length; j++) {
+                rows[j] += board[i][j].GetType().ToString();
+                rows[j] += " - ";
+            }
+        }
+
+        Debug.Log("GameBoard");
         for (int i = 0; i < board.Length; i++) {
             Debug.Log(rows[i]);
         }
