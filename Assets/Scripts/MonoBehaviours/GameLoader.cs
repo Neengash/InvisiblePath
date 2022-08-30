@@ -7,10 +7,11 @@ using Feto;
 public class GameLoader : Singleton<GameLoader>
 {
     public GameCell[][] gameBoard;
+    public BoardScriptable boardConfig;
 
     void Start()
     {
-        CellData[][] boardData = BoardData.Generate();
+        CellData[][] boardData = BoardData.Generate(boardConfig.boardSize);
         PrintBoard(boardData); // TMP
 
         gameBoard = GameBoard.Generate(boardData);

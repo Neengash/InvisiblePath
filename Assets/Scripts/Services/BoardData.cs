@@ -4,17 +4,16 @@ using UnityEngine;
 
 public class BoardData
 {
-    public const int BOARD_SIZE = 6;
-    public static CellData[][] Generate() {
-        CellData[][] board = GenerateEmptyBoard();
+    public static CellData[][] Generate(int boardSize) {
+        CellData[][] board = GenerateEmptyBoard(boardSize);
         PopulateBoard(ref board);
         return board;
     }
 
-    private static CellData[][] GenerateEmptyBoard() {
-        CellData[][] board = new CellData[BOARD_SIZE][];
+    private static CellData[][] GenerateEmptyBoard(int boardSize) {
+        CellData[][] board = new CellData[boardSize][];
         for (int i = 0; i < board.Length; i++) {
-            board[i] = new CellData[BOARD_SIZE];
+            board[i] = new CellData[boardSize];
             for (int j = 0; j < board[i].Length; j++) {
                 board[i][j] = new CellData();
             }
@@ -29,14 +28,14 @@ public class BoardData
 
     private static void PopulateRows(ref CellData[][] board) {
         for (int j = 0; j < board.Length; j++) {
-            int column = Random.Range(0, BOARD_SIZE);
+            int column = Random.Range(0, board.Length);
             PopulateCell(ref board, column, j);
         }
     }
 
     private static void PopulateColumns(ref CellData[][] board) {
         for (int i = 0; i < board.Length; i++) {
-            int row = Random.Range(0, BOARD_SIZE);
+            int row = Random.Range(0, board.Length);
             PopulateCell(ref board, i, row);
         }
     }
@@ -161,7 +160,7 @@ public class BoardData
     }
 
     private static void SetToFalse(ref CellData[][] board, int i, int j, Direction direction) {
-        if (i < 0 || i >= BOARD_SIZE || j < 0 || j >= BOARD_SIZE) {
+        if (i < 0 || i >= board.Length || j < 0 || j >= board.Length) {
             return;
         }
         board[i][j].canEnter[direction] = false;

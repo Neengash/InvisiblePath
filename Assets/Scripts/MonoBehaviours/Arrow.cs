@@ -8,9 +8,11 @@ public class Arrow : MonoBehaviour
     public Direction direction;
 
     public void ArrowClicked() {
-        // Load Path from spot
         // Play Animation for ball
         List<Action> path = BallPath.Calculate(GameLoader.Instance.gameBoard, X, Y, direction);
+
+        // Ball - perform actions
+        BallController.Instance.PerformActions(path, X, Y, GameLoader.Instance.boardConfig);
 
         Debug.Log($"Clicked on {X} - {Y} looking {direction}");
         foreach (Action action in path) {
