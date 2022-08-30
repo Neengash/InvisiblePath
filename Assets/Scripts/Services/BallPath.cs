@@ -13,15 +13,7 @@ public class BallPath
         UpdatePosition(ref x, ref y, direction);
 
         CellAction(board, x, y, direction, ref path, ref visited);
-        // Save cells visited to prevent loops.
 
-        // Path --> Array of actions
-        // Starting position (scale up)
-        // Translate to next position
-        // ....
-        // Ending position (scale down)
-        //
-        // Action = "ActionType" [ScaleUp/ScaleDown/Translate] + Vector3D
         return path;
     }
 
@@ -53,16 +45,43 @@ public class BallPath
         path.Add(action);
         UpdatePosition(ref x, ref y, action.direction);
 
-        if (action.type == ActionType.END) {
-            return;
-        }
+        if (FinishedPath(action)) { return; }
 
-        if (action.type == ActionType.TRANSLATE && (x < 0 || x >= board.Length || y < 0 || y >= board.Length)) {
+        if (MovedOutsideBoard(action, x, y, board.Length)) {
             path.Add(new Action(ActionType.END));
             return;
         }
 
-        // Check & Update visited
+        CheckAndUpdateVisited(ref path, ref visited, x, y, direction);
+
+        CellAction(board, x, y, action.direction, ref path, ref visited);
+    }
+
+    private static Direction Reverse(Direction direction) {
+        switch (direction) {
+            case Direction.TOP: return Direction.BOT;
+            case Direction.RIGHT: return Direction.LEFT;
+            case Direction.BOT: return Direction.TOP;
+            case Direction.LEFT: return Direction.RIGHT;
+            default:  return Direction.TOP;
+        }
+    }
+
+    private static bool FinishedPath(Action action) {
+        return action.type == ActionType.END;
+    }
+
+    private static bool MovedOutsideBoard(Action action, int x, int y, int boardSize) {
+        return action.type == ActionType.TRANSLATE && (x < 0 || x >= boardSize || y < 0 || y >= boardSize);
+    }
+    
+    private static void CheckAndUpdateVisited(
+        ref List<Action> path,
+        ref Dictionary<int, Direction[]> visited,
+        int x,
+        int y,
+        Direction direction
+    ) {
         int key = x * 10 + y;
         if (visited.ContainsKey(key)) {
             Direction[] directions = visited[key];
@@ -79,19 +98,6 @@ public class BallPath
             Direction[] directions = new Direction[4];
             directions[0] = direction;
             visited.Add(key, directions);
-        }
-
-        // Continue
-        CellAction(board, x, y, action.direction, ref path, ref visited);
-    }
-
-    private static Direction Reverse(Direction direction) {
-        switch (direction) {
-            case Direction.TOP: return Direction.BOT;
-            case Direction.RIGHT: return Direction.LEFT;
-            case Direction.BOT: return Direction.TOP;
-            case Direction.LEFT: return Direction.RIGHT;
-            default:  return Direction.TOP;
         }
     }
 }
