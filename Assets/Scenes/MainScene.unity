@@ -3098,11 +3098,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 782191151641137993, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.106
       objectReference: {fileID: 0}
     - target: {fileID: 782191151641137993, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.35
+      value: -0.4612
       objectReference: {fileID: 0}
     - target: {fileID: 782191151641137993, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3135,6 +3135,18 @@ PrefabInstance:
     - target: {fileID: 6076045781504379372, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
       propertyPath: m_Name
       value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887146245830176170, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
+      propertyPath: scaleSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887146245830176170, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
+      propertyPath: translateError
+      value: 0.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887146245830176170, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
+      propertyPath: translateSpeed
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
