@@ -1,5 +1,8 @@
 #Invisible Path
 
+### Future Improvements
+
+* Different AI difficulties
 
 ### Resources
 
