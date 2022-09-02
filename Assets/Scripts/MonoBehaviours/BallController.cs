@@ -10,6 +10,7 @@ public class BallController : Singleton<BallController>
     BoardScriptable boardConfig;
     public float scaleSpeed;
     public float translateSpeed, translateError;
+    public float rotationSpeed;
 
     public void PerformActions(
         List<Action> path,
@@ -83,14 +84,14 @@ public class BallController : Singleton<BallController>
     }
 
     private IEnumerator PerformTranslate() {
-        GetSpeedDirections(out int xDir, out int zDir);
+        GetSpeedDirections(out int xPosDir, out int zPosDir, out int xRotDir, out int zRotDir);
         Vector3 destination = transform.position + new Vector3(
-            xDir * boardConfig.boardCellSize, 0, zDir * boardConfig.boardCellSize);
+            xPosDir * boardConfig.boardCellSize, 0, zPosDir * boardConfig.boardCellSize);
 
         while (Mathf.Abs(Vector3.Distance(transform.position, destination)) >= translateError) {
             transform.position = Vector3.MoveTowards(
                 transform.position, destination, translateSpeed * Time.deltaTime);
-
+            transform.Rotate(xRotDir * rotationSpeed, 0, zRotDir * rotationSpeed, Space.World); 
             yield return null;
         }
 
@@ -98,28 +99,28 @@ public class BallController : Singleton<BallController>
         PerformNextAction();
     }
 
-    private void GetSpeedDirections(out int xDir, out int zDir) {
+    private void GetSpeedDirections(out int xPosDir, out int zPosDir, out int xRotDir, out int zRotDir) {
         Direction direction = path[actionIdx].direction;
         switch (direction) {
             case Direction.TOP:
-                xDir = -1;
-                zDir = 0;
+                xPosDir = -1; zPosDir = 0;
+                xRotDir = 0; zRotDir = 1;
                 break;
             case Direction.RIGHT:
-                xDir = 0;
-                zDir = 1;
+                xPosDir = 0; zPosDir = 1;
+                xRotDir = 1; zRotDir = 0;
                 break;
             case Direction.BOT:
-                xDir = 1;
-                zDir = 0;
+                xPosDir = 1; zPosDir = 0;
+                xRotDir = 0; zRotDir = -1;
                 break;
             case Direction.LEFT:
-                xDir = 0;
-                zDir = -1;
+                xPosDir = 0; zPosDir = -1;
+                xRotDir = -1; zRotDir = 0;
                 break;
             default:
-                xDir = 0;
-                zDir = 0;
+                xPosDir = 0; zPosDir = 0;
+                xRotDir = 0; zRotDir = 0;
                 break;
         }
 

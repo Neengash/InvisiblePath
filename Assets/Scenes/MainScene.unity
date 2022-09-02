@@ -3141,6 +3141,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6887146245830176170, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
+      propertyPath: rotationSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6887146245830176170, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
       propertyPath: translateError
       value: 0.001
       objectReference: {fileID: 0}
