@@ -12,6 +12,12 @@ public class BallController : Singleton<BallController>
     public float translateSpeed, translateError;
     public float rotationSpeed;
 
+    BallSounds ballSounds;
+
+    private void Start() {
+        ballSounds = GetComponent<BallSounds>(); 
+    }
+
     public void PerformActions(
         List<Action> path,
         int x,
@@ -51,14 +57,17 @@ public class BallController : Singleton<BallController>
             case ActionType.SPAWN:
                 Debug.Log("START ACTION");
                 StartCoroutine(PerformSpawn());
+                ballSounds.PlayStart();
                 break;
             case ActionType.TRANSLATE:
                 Debug.Log($"TRANSLATE ACTION - {path[actionIdx].direction}");
                 StartCoroutine(PerformTranslate());
+                ballSounds.PlayMovement();
                 break;
             case ActionType.END:
                 Debug.Log("END ACTION");
                 StartCoroutine(PerformEnd());
+                ballSounds.PlayEnd();
                 break;
         }
         actionIdx++;
