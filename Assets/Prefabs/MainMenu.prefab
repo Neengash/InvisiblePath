@@ -579,7 +579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: P1 VS IA
+  m_text: P1 VS AI
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -661,7 +661,7 @@ GameObject:
   - component: {fileID: 2087595011424841943}
   - component: {fileID: 2087595011424841940}
   m_Layer: 5
-  m_Name: PVSIA_Button
+  m_Name: PVSAI_Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
