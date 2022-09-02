@@ -16,8 +16,8 @@ public class ScoreManager : Singleton<ScoreManager>
         p2ScoreText.text = p2Score.ToString();
     }
 
-    public void Score(Players player) {
-        if (player == Players.FIRST) {
+    public void Score(Player player) {
+        if (player == Player.FIRST) {
             p1Score++;
             p1ScoreText.text = p1Score.ToString();
         } else {

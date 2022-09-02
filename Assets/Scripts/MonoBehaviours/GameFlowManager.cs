@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Feto;
 
-public class GameFlowManager : MonoBehaviour
+public class GameFlowManager : Singleton<GameFlowManager>
 {
-    [SerializeField] GameObject MainMenuManager;
-    [SerializeField] GameObject GamePlayManager;
-    [SerializeField] GameObject EndGameManager;
+    [SerializeField] GameState MainMenuManager;
+    [SerializeField] GameState GamePlayManager;
+    [SerializeField] GameState EndGameManager;
 
     private void Start() {
-        MainMenuManager.SetActive(true);
-        GamePlayManager.SetActive(false);
-        EndGameManager.SetActive(false);
+        MainMenuManager.StartState();
+        GamePlayManager.EndState();
+        EndGameManager.EndState();
     }
 }
