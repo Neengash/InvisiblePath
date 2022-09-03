@@ -1211,6 +1211,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &755827920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 373562144331728861, guid: fa3b48e25386643458598a3c9cd46793, type: 3}
+  m_PrefabInstance: {fileID: 6720987332244219231}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &761480469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1627,6 +1638,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6720987332147036349, guid: fa3b48e25386643458598a3c9cd46793, type: 3}
   m_PrefabInstance: {fileID: 6720987332244219231}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &939027643 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5659140244298651815, guid: fa3b48e25386643458598a3c9cd46793, type: 3}
+  m_PrefabInstance: {fileID: 6720987332244219231}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &948417681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2222,6 +2244,7 @@ GameObject:
   - component: {fileID: 1268633486}
   - component: {fileID: 1268633485}
   - component: {fileID: 1268633484}
+  - component: {fileID: 1268633487}
   m_Layer: 0
   m_Name: GameFlowManager
   m_TagString: Untagged
@@ -2300,6 +2323,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MainMenuCanvas: {fileID: 1576031326}
+--- !u!114 &1268633487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1268633481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec368ec57c8eea34e9f508e022f6f4b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p1ScoreGamePlay: {fileID: 939027643}
+  p2ScoreGamePlay: {fileID: 755827920}
 --- !u!1001 &1396625622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2634,6 +2671,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameplayUICanvas: {fileID: 938145273}
+  dependencies:
+  - {fileID: 1624841211}
+  - {fileID: 1624841212}
 --- !u!1001 &1815614717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3020,17 +3060,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 66534839223606380, guid: 038d91222c16874419fc210e6eceaf6c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 1650973799271220345, guid: 038d91222c16874419fc210e6eceaf6c, type: 3}
       propertyPath: m_Name
       value: Board
-      objectReference: {fileID: 0}
-    - target: {fileID: 1650973799271220345, guid: 038d91222c16874419fc210e6eceaf6c, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
       objectReference: {fileID: 0}
     - target: {fileID: 2135479458377342659, guid: 038d91222c16874419fc210e6eceaf6c, type: 3}
       propertyPath: m_RootOrder
@@ -3085,6 +3117,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2087595011424841940, guid: 60812f355cbe5cf40ad1a2823056924a, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2087595012024776906, guid: 60812f355cbe5cf40ad1a2823056924a, type: 3}
       propertyPath: m_Name
       value: MainMenu
@@ -3418,18 +3454,6 @@ PrefabInstance:
     - target: {fileID: 6720987332147036345, guid: fa3b48e25386643458598a3c9cd46793, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720987332147036347, guid: fa3b48e25386643458598a3c9cd46793, type: 3}
-      propertyPath: m_UiScaleMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720987332147036347, guid: fa3b48e25386643458598a3c9cd46793, type: 3}
-      propertyPath: m_ReferenceResolution.x
-      value: 1280
-      objectReference: {fileID: 0}
-    - target: {fileID: 6720987332147036347, guid: fa3b48e25386643458598a3c9cd46793, type: 3}
-      propertyPath: m_ReferenceResolution.y
-      value: 720
       objectReference: {fileID: 0}
     - target: {fileID: 6720987332147036349, guid: fa3b48e25386643458598a3c9cd46793, type: 3}
       propertyPath: m_Name
