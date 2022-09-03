@@ -19,6 +19,7 @@ Textures from polyhaven
 * https://polyhaven.com/a/beige_wall_001
 * https://polyhaven.com/a/wood_table_worn
 * https://polyhaven.com/a/wood_table_001
+* https://polyhaven.com/a/factory_wall
 
 Sounds from freesound
 * Ball Movement Start: [rolling wood ball field (...) - By Garuda1982](https://freesound.org/people/Garuda1982/sounds/425833/) (Modified)
