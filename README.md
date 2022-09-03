@@ -5,6 +5,7 @@
 * Feedback on hover over interactable arrows
 * Different AI difficulties
 * Show hint of "special effect" on spaces when activated (ball rolls over)
+* Improve cell isolated checks -> Board creation
 
 * GamePlay Improvements
   * Check board generation

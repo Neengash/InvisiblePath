@@ -5,21 +5,17 @@ using UnityEngine;
 public class GameplayState : GameState
 {
     [SerializeField] GameObject gameplayUICanvas;
-    [SerializeField] MonoBehaviour[] dependencies;
+    [SerializeField] GamePlayManager gameplayManager;
+    [SerializeField] InputManager inputManager;
 
     public override void EndState() {
         gameplayUICanvas.SetActive(false);
-
-        for (int i = 0; i < dependencies.Length; i++) {
-            dependencies[i].enabled = false;
-        }
+        inputManager.enabled = false;
     }
 
     public override void StartState() {
         gameplayUICanvas.SetActive(true);
+        gameplayManager.StartGame();
 
-        for (int i = 0; i < dependencies.Length; i++) {
-            dependencies[i].enabled = true;
-        }
     }
 }

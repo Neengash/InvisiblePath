@@ -14,6 +14,7 @@ public class InputManager : MonoBehaviour
                 Arrow arrow = hit.collider.gameObject.GetComponent<Arrow>();
                 if (arrow != null) {
                     arrow.ArrowClicked();
+                    this.enabled = false;
                 }
             }
         }

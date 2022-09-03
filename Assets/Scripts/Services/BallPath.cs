@@ -47,12 +47,14 @@ public class BallPath
 
         if (FinishedPath(action)) { return; }
 
-        if (MovedOutsideBoard(action, x, y, board.Length)) {
+        if (
+            MovedOutsideBoard(action, x, y, board.Length) ||
+            CheckLoopingPath(ref path, ref visited, x, y, direction)
+        ) {
             path.Add(new Action(ActionType.END));
-            return;
         }
 
-        CheckAndUpdateVisited(ref path, ref visited, x, y, direction);
+        if (FinishedPath(path[path.Count-1])) { return; }
 
         CellAction(board, x, y, action.direction, ref path, ref visited);
     }
@@ -75,7 +77,7 @@ public class BallPath
         return action.type == ActionType.TRANSLATE && (x < 0 || x >= boardSize || y < 0 || y >= boardSize);
     }
     
-    private static void CheckAndUpdateVisited(
+    private static bool CheckLoopingPath(
         ref List<Action> path,
         ref Dictionary<int, Direction[]> visited,
         int x,
@@ -88,7 +90,7 @@ public class BallPath
             int i = 0;
             while (i < directions.Length && directions[i] != Direction.NONE) {
                 if (directions[i] == direction) {
-                    path.Add(new Action(ActionType.END));
+                    return true;
                 }
                 i++;
             }
@@ -99,5 +101,6 @@ public class BallPath
             directions[0] = direction;
             visited.Add(key, directions);
         }
+        return false;
     }
 }

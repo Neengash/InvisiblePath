@@ -9,7 +9,7 @@ public class Arrow : MonoBehaviour
 
     public void ArrowClicked() {
         // Play Animation for ball
-        List<Action> path = BallPath.Calculate(GameLoader.Instance.gameBoard, X, Y, direction);
+        List<Action> path = BallPath.Calculate(GamePlayManager.Instance.gameBoard, X, Y, direction);
 
         Debug.Log($"Clicked on {X} - {Y} looking {direction}");
         foreach (Action action in path) {
@@ -17,6 +17,6 @@ public class Arrow : MonoBehaviour
         }
 
         // Ball - perform actions
-        BallController.Instance.PerformActions(path, X, Y, GameLoader.Instance.boardConfig);
+        BallController.Instance.PerformActions(path, X, Y, GamePlayManager.Instance.boardConfig);
     }
 }

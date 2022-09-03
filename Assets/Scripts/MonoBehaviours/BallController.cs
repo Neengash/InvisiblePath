@@ -139,6 +139,8 @@ public class BallController : Singleton<BallController>
     private IEnumerator PerformEnd() {
         Vector3 scale = transform.localScale;
 
+        // Check for score
+
         while (scale.x > 0) {
             scale = new Vector3(
                 scale.x -= scaleSpeed * Time.deltaTime,
@@ -151,7 +153,6 @@ public class BallController : Singleton<BallController>
         }
         transform.localScale = Vector3.zero;
 
-        // Check for score
-        // Notify Next Turn
+        GamePlayManager.Instance.NextTurn();
     }
 }

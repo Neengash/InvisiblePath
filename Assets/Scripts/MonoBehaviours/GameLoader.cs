@@ -4,24 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using Feto;
 
-public class GameLoader : Singleton<GameLoader>
+public class GameLoader : MonoBehaviour
 {
     public GameCell[][] gameBoard;
     public BoardScriptable boardConfig;
 
-    void Start()
+    public GameCell[][] GenerateGameBoard(BoardScriptable boardConfig) 
     {
         CellData[][] boardData = BoardData.Generate(boardConfig.boardSize);
-        PrintBoard(boardData); // TMP
-
         gameBoard = GameBoard.Generate(boardData);
-        //PrintGameBoard(gameBoard);
 
-        ScoreManager.Instance.ResetScores();
-        // Reset Score Counters
-        // Assign turn to player 1
-        // Load IA or Player 2 (depending on game config) - GAME PLAY MANAGER?
-        // Start Game
+        return gameBoard;
     }
 
     private void PrintBoard(CellData[][] board) {
