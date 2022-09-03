@@ -2,7 +2,14 @@
 
 ### Future Improvements
 
+* Feedback on hover over interactable arrows
 * Different AI difficulties
+* Show hint of "special effect" on spaces when activated (ball rolls over)
+
+* GamePlay Improvements
+  * Check board generation
+  * Block arrows when adjacent to scoring space
+
 
 ### Resources
 
