@@ -23,7 +23,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
 
         SetTurn(Player.FIRST);
 
-        StartCoroutine(ActivateInput());
+        playerInput.enabled = true;
     }
 
     private void SetTurn(Player newTurn) {
@@ -38,11 +38,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
             : Player.FIRST;
         SetTurn(nextTurn);
         // TODO: Coroutine might not be necessary
-        StartCoroutine(ActivateInput());
-    }
-
-    IEnumerator ActivateInput() {
-        yield return new WaitForSeconds(0.5f);
         playerInput.enabled = true;
     }
+
 }
