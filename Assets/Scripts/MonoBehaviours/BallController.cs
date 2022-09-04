@@ -87,6 +87,7 @@ public class BallController : Singleton<BallController>
             yield return null;
         }
         transform.localScale = Vector3.one;
+
         // TODO:: Check for score
 
         PerformNextAction();
@@ -100,8 +101,17 @@ public class BallController : Singleton<BallController>
         while (Mathf.Abs(Vector3.Distance(transform.position, destination)) >= translateError) {
             transform.position = Vector3.MoveTowards(
                 transform.position, destination, translateSpeed * Time.deltaTime);
-            transform.Rotate(xRotDir * rotationSpeed, 0, zRotDir * rotationSpeed, Space.World); 
+            transform.Rotate(
+                xRotDir * rotationSpeed * Time.deltaTime,
+                0,
+                zRotDir * rotationSpeed * Time.deltaTime,
+                Space.World
+            ); 
             yield return null;
+        }
+
+        if (path[actionIdx].score) {
+            GamePlayManager.Instance.Score();
         }
 
         // Check for score

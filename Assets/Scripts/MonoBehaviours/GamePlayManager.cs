@@ -10,6 +10,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
     [SerializeField] InputManager playerInput;
     [SerializeField] TextMeshProUGUI p1Turn, p2Turn;
     public GameCell[][] gameBoard;
+    List<int> scoringSpaces;
 
     Player currentTurn;
 
@@ -19,7 +20,12 @@ public class GamePlayManager : Singleton<GamePlayManager>
         CellData[][] boardData = BoardData.Generate(boardConfig.boardSize);
         gameBoard = GameBoard.Generate(boardData);
 
-        // Set scoring space
+        scoringSpaces = new List<int>();
+        int x = Random.Range(1, 4);
+        int y = Random.Range(1, 4);
+        gameBoard[x][y].isScore = true;
+        scoringSpaces.Add(x * 10 + y);
+        Debug.Log($"New Scoring Space ( {x} , {y} )");
 
         SetTurn(Player.FIRST);
 
@@ -33,12 +39,31 @@ public class GamePlayManager : Singleton<GamePlayManager>
     }
 
     public void NextTurn() {
+        // TODO: Generate New Scoring Space
+        int key = scoringSpaces[scoringSpaces.Count - 1];
+        int x = key / 10;
+        int y = key % 10;
+        if (!gameBoard[x][y].isScore) {
+            x = Random.Range(1, 4);
+            y = Random.Range(1, 4);
+            gameBoard[x][y].isScore = true;
+            scoringSpaces.Add(x * 10 + y);
+            Debug.Log($"New Scoring Space ( {x} , {y} )");
+        }
+
         Player nextTurn = currentTurn == Player.FIRST
             ? Player.SECOND
             : Player.FIRST;
         SetTurn(nextTurn);
-        // TODO: Coroutine might not be necessary
         playerInput.enabled = true;
     }
 
+    public void Score() {
+        int key = scoringSpaces[scoringSpaces.Count - 1];
+        int x = key / 10;
+        int y = key % 10;
+        gameBoard[x][y].isScore = false;
+
+        ScoreManager.Instance.Score(currentTurn);
+    }
 }

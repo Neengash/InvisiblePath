@@ -50,7 +50,7 @@ MonoBehaviour:
   scaleSpeed: 1
   translateSpeed: 0.25
   translateError: 0.001
-  rotationSpeed: 0.5
+  rotationSpeed: 180
 --- !u!114 &968579690940439741
 MonoBehaviour:
   m_ObjectHideFlags: 0

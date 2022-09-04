@@ -10,6 +10,7 @@ public class GameFlowManager : Singleton<GameFlowManager>
     [SerializeField] GameState EndGameManager;
 
     private void Start() {
+        Application.targetFrameRate = 60;
         MainMenu();
     }
 
