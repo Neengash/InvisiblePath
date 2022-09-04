@@ -26,6 +26,7 @@ public class ScoreManager : Singleton<ScoreManager>
             p2ScoreGamePlay.text = p2Score.ToString();
         }
         audioSource.Play();
+        ScoreStarController.Instance.HideStar();
     }
 
     public int GetScore(Player player) {

@@ -24,6 +24,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
         int x = Random.Range(1, 4);
         int y = Random.Range(1, 4);
         gameBoard[x][y].isScore = true;
+        ScoreStarController.Instance.PlaceStar(x, y);
         scoringSpaces.Add(x * 10 + y);
         Debug.Log($"New Scoring Space ( {x} , {y} )");
 
@@ -52,6 +53,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
             x = Random.Range(1, 4);
             y = Random.Range(1, 4);
             gameBoard[x][y].isScore = true;
+            ScoreStarController.Instance.PlaceStar(x, y);
             scoringSpaces.Add(x * 10 + y);
             Debug.Log($"New Scoring Space ( {x} , {y} )");
         }
