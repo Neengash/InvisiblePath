@@ -39,6 +39,11 @@ public class GamePlayManager : Singleton<GamePlayManager>
     }
 
     public void NextTurn() {
+        if (ScoreManager.Instance.EndGame()) {
+            GameFlowManager.Instance.EndGame();
+            return;
+        }
+
         // TODO: Generate New Scoring Space
         int key = scoringSpaces[scoringSpaces.Count - 1];
         int x = key / 10;

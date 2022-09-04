@@ -6,11 +6,16 @@ public class EndGameState : GameState
 {
     [SerializeField] GameObject endGameCanvas;
 
+    [SerializeField] LoadEndGameScore[] scores;
+
     public override void EndState() {
         endGameCanvas.SetActive(false);
     }
 
     public override void StartState() {
         endGameCanvas.SetActive(true);
+        for (int i = 0; i < scores.Length; i++) {
+            scores[i].ReloadData();
+        }
     }
 }

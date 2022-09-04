@@ -25,4 +25,14 @@ public class ScoreManager : Singleton<ScoreManager>
             p2ScoreGamePlay.text = p2Score.ToString();
         }
     }
+
+    public int GetScore(Player player) {
+        return player == Player.FIRST
+            ? p1Score
+            : p2Score;
+    }
+
+    public bool EndGame() {
+        return p1Score >= 3 || p2Score >= 3;
+    }
 }
