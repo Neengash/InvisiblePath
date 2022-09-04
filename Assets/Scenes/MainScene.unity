@@ -254,6 +254,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 69750375748828705, guid: dab5a87241e252b4195d87d14dc1acba, type: 3}
   m_PrefabInstance: {fileID: 147524924}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &179051915 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6076045781504379372, guid: a4539a63405350d4aaa2c0414e54a73b, type: 3}
+  m_PrefabInstance: {fileID: 5593275600476460591}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &188540275
 GameObject:
   m_ObjectHideFlags: 0
@@ -2763,6 +2768,7 @@ MonoBehaviour:
   gameplayUICanvas: {fileID: 938145273}
   gameplayManager: {fileID: 1624841214}
   inputManager: {fileID: 1624841212}
+  ball: {fileID: 179051915}
 --- !u!114 &1624841214
 MonoBehaviour:
   m_ObjectHideFlags: 0
