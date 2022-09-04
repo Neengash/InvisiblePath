@@ -8,6 +8,7 @@ public class ScoreManager : Singleton<ScoreManager>
 {
     int p1Score, p2Score;
     [SerializeField] TextMeshProUGUI p1ScoreGamePlay, p2ScoreGamePlay;
+    [SerializeField] AudioSource audioSource;
 
     public void ResetScores() {
         p1Score = 0;
@@ -24,6 +25,7 @@ public class ScoreManager : Singleton<ScoreManager>
             p2Score++;
             p2ScoreGamePlay.text = p2Score.ToString();
         }
+        audioSource.Play();
     }
 
     public int GetScore(Player player) {
