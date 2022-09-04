@@ -7,6 +7,7 @@ public class EndGameState : GameState
     [SerializeField] GameObject endGameCanvas;
 
     [SerializeField] LoadEndGameScore[] scores;
+    [SerializeField] EndGameWinnerTag[] winnerTags;
 
     public override void EndState() {
         endGameCanvas.SetActive(false);
@@ -16,6 +17,9 @@ public class EndGameState : GameState
         endGameCanvas.SetActive(true);
         for (int i = 0; i < scores.Length; i++) {
             scores[i].ReloadData();
+        }
+        for (int i = 0; i < winnerTags.Length; i++) {
+            winnerTags[i].ReloadData();
         }
     }
 }

@@ -32,6 +32,12 @@ public class ScoreManager : Singleton<ScoreManager>
             : p2Score;
     }
 
+    public bool IsWinner(Player player) {
+        return player == Player.FIRST
+            ? p1Score > p2Score
+            : p2Score > p1Score;
+    }
+
     public bool EndGame() {
         return p1Score >= 3 || p2Score >= 3;
     }

@@ -842,6 +842,7 @@ GameObject:
   - component: {fileID: 4365376118680544726}
   - component: {fileID: 5160862517298262608}
   - component: {fileID: 3300141902365750825}
+  - component: {fileID: 2911204907369318246}
   m_Layer: 5
   m_Name: P2_Winner
   m_TagString: Untagged
@@ -966,6 +967,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &2911204907369318246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898865633040727451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71410ebaea68be046a1fcf07ba3d96cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 1
 --- !u!1 &1904852375816611331
 GameObject:
   m_ObjectHideFlags: 0
@@ -1232,6 +1246,7 @@ GameObject:
   - component: {fileID: 7458140722010834566}
   - component: {fileID: 1564307670526736152}
   - component: {fileID: 3446334151774524716}
+  - component: {fileID: 3252727357092661195}
   m_Layer: 5
   m_Name: P1_Winner
   m_TagString: Untagged
@@ -1356,6 +1371,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &3252727357092661195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3066801684087380956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71410ebaea68be046a1fcf07ba3d96cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 0
 --- !u!1 &3449753446726614496
 GameObject:
   m_ObjectHideFlags: 0
