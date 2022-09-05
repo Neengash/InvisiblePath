@@ -13,6 +13,9 @@ public class LoadEndGameScore : MonoBehaviour
     }
 
     public void ReloadData() {
+        if (scoreText == null) {
+            scoreText = GetComponent<TextMeshProUGUI>();
+        }
         scoreText.text = ScoreManager.Instance.GetScore(player).ToString();
     }
 }

@@ -17,6 +17,9 @@ public class EndGameWinnerTag : MonoBehaviour
     }
 
     public void ReloadData() {
+        if (winnerTag == null) {
+            winnerTag = GetComponent<TextMeshProUGUI>();
+        }
         winnerTag.text = ScoreManager.Instance.IsWinner(player)
             ? Winner
             : Loser;
