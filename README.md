@@ -6,6 +6,7 @@
 * Different AI difficulties
 * Show hint of "special effect" on spaces when activated (ball rolls over)
 * Improve cell isolated checks -> Board creation
+* Two different colors for the ball, one for each player
 
 * GamePlay Improvements
   * Check board generation
