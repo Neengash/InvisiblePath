@@ -65,7 +65,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementStart: {fileID: 8300000, guid: e69af5f3c0a66bd49a3a0fa6a80798f7, type: 3}
   movement: {fileID: 8300000, guid: 3a76bf85a5e7b0646af034d0589b2b27, type: 3}
-  movementEnd: {fileID: 8300000, guid: 7123e1c609616b24e9f2ad1ddaa3b61b, type: 3}
+  movementEnd: {fileID: 8300000, guid: d6188cd5dfa95734da7624a4ebc1c403, type: 3}
 --- !u!82 &2427111808378100888
 AudioSource:
   m_ObjectHideFlags: 0
