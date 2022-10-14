@@ -8,7 +8,8 @@ public class GamePlayManager : Singleton<GamePlayManager>
 {
     [SerializeField] public BoardScriptable boardConfig;
     [SerializeField] InputManager playerInput;
-    [SerializeField] TextMeshProUGUI p1Turn, p2Turn;
+    [SerializeField] PlayerTurnController p1Turn, p2Turn;
+    [SerializeField] GameConfigScriptable gameConfig;
     public GameCell[][] gameBoard;
     List<int> scoringSpaces;
 
@@ -35,8 +36,8 @@ public class GamePlayManager : Singleton<GamePlayManager>
 
     private void SetTurn(Player newTurn) {
         currentTurn = newTurn;
-        p1Turn.text = (currentTurn == Player.FIRST) ? "TURN" : " ";
-        p2Turn.text = (currentTurn == Player.FIRST) ? " " : "TURN";
+        p1Turn.SetBackgroundColor((currentTurn == Player.FIRST) ? gameConfig.Player1Color: gameConfig.InactiveTurnColor);
+        p2Turn.SetBackgroundColor((currentTurn == Player.FIRST) ? gameConfig.InactiveTurnColor : gameConfig.Player2Color);
     }
 
     public void NextTurn() {
