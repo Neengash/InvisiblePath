@@ -38,6 +38,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
         currentTurn = newTurn;
         p1Turn.SetBackgroundColor((currentTurn == Player.FIRST) ? gameConfig.Player1Color: gameConfig.InactiveTurnColor);
         p2Turn.SetBackgroundColor((currentTurn == Player.FIRST) ? gameConfig.InactiveTurnColor : gameConfig.Player2Color);
+        BallController.Instance.SetPlayer(currentTurn);
     }
 
     public void NextTurn() {
@@ -46,7 +47,6 @@ public class GamePlayManager : Singleton<GamePlayManager>
             return;
         }
 
-        // TODO: Generate New Scoring Space
         int key = scoringSpaces[scoringSpaces.Count - 1];
         int x = key / 10;
         int y = key % 10;

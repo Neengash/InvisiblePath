@@ -11,11 +11,13 @@ public class BallController : Singleton<BallController>
     public float scaleSpeed;
     public float translateSpeed, translateError;
     public float rotationSpeed;
+    MeshRenderer meshRenderer;
 
     BallSounds ballSounds;
 
     private void Start() {
-        ballSounds = GetComponent<BallSounds>(); 
+        ballSounds = GetComponent<BallSounds>();
+        meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
 
     public void PerformActions(
@@ -33,6 +35,14 @@ public class BallController : Singleton<BallController>
 
         Debug.Log("START ACTIONS");
         PerformNextAction();
+    }
+
+    public void SetPlayer(Player player) {
+        if (player == Player.FIRST) {
+            meshRenderer.material = Resources.Load<Material>("Player1Material");
+        } else {
+            meshRenderer.material = Resources.Load<Material>("Player2Material");
+        }
     }
 
     private void PlaceBall(int x, int y) {
