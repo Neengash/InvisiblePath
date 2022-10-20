@@ -50,7 +50,8 @@ public class BoardData
     }
 
     private static CellType RandomCellType() {
-        return (CellType)Random.Range(1, 5);
+        return CellType.ROTATION;
+        // return (CellType)Random.Range(1, 5); // Old version -- with múltiple types
     }
 
     private static CellTypeDetailed RandomDetailedType(CellType type) {
