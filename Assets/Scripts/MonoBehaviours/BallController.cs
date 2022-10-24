@@ -15,6 +15,8 @@ public class BallController : Singleton<BallController>
 
     BallSounds ballSounds;
 
+    private bool alreadyScored;
+
     private void Start() {
         ballSounds = GetComponent<BallSounds>();
         meshRenderer = GetComponentInChildren<MeshRenderer>();
@@ -26,6 +28,7 @@ public class BallController : Singleton<BallController>
         int y,
         BoardScriptable boardConfig
     ) {
+        alreadyScored = false;
         actionIdx = 0;
         this.path = path;
         this.boardConfig = boardConfig;
@@ -120,8 +123,9 @@ public class BallController : Singleton<BallController>
             yield return null;
         }
 
-        if (path[actionIdx].score) {
+        if (path[actionIdx].score && !alreadyScored) {
             GamePlayManager.Instance.Score();
+            alreadyScored = true;
         }
 
         // Check for score
