@@ -21,6 +21,12 @@ public class ArrowsManager : Singleton<ArrowsManager>
         }
     }
 
+    public void DisableArrows() {
+        for (int i = 0; i < arrows.Length; i++) {
+            arrows[i].SetActiveArrow(false);
+        }
+    }
+
     public void UpdateAvaiableArrows(int x, int y) {
         closest.Clear();
         int distance = MAX_DISTANCE;

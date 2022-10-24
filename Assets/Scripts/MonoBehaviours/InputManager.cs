@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
                 if (arrow != null && arrow.IsActive()) {
                     arrow.ArrowClicked();
                     this.enabled = false;
+                    ArrowsManager.Instance.DisableArrows();
                 }
             }
         }
