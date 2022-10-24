@@ -76,6 +76,7 @@ public class BallController : Singleton<BallController>
                 Debug.Log($"TRANSLATE ACTION - {path[actionIdx].direction}");
                 StartCoroutine(PerformTranslate());
                 ballSounds.PlayMovement();
+                CheckRotationEffect();
                 break;
             case ActionType.END:
                 Debug.Log("END ACTION");
@@ -100,8 +101,6 @@ public class BallController : Singleton<BallController>
             yield return null;
         }
         transform.localScale = Vector3.one;
-
-        // TODO:: Check for score
 
         PerformNextAction();
     }
@@ -128,7 +127,6 @@ public class BallController : Singleton<BallController>
             alreadyScored = true;
         }
 
-        // Check for score
         PerformNextAction();
     }
 
@@ -159,11 +157,8 @@ public class BallController : Singleton<BallController>
 
     }
 
-
     private IEnumerator PerformEnd() {
         Vector3 scale = transform.localScale;
-
-        // Check for score
 
         while (scale.x > 0) {
             scale = new Vector3(
@@ -178,5 +173,38 @@ public class BallController : Singleton<BallController>
         transform.localScale = Vector3.zero;
 
         GamePlayManager.Instance.NextTurn();
+    }
+
+    private void CheckRotationEffect() {
+        Direction currentDirection = path[actionIdx].direction;
+        Direction previousDirection = GetPreviousDirection();
+
+        if (previousDirection == currentDirection) { return; }
+        if (previousDirection == Direction.NONE) { return; }
+
+        if (IsClockWiseRotation(currentDirection, previousDirection)) {
+            EffectsManager.Instance.PlayRotationEffect(transform.position);
+        } else {
+            EffectsManager.Instance.PlayCounterRotationEffect(transform.position);
+        }
+    }
+
+    private Direction GetPreviousDirection() {
+        int i = actionIdx -1 ;
+        while (i >= 0) {
+            if (path[i].type == ActionType.TRANSLATE) {
+                return path[i].direction;
+            }
+            i--;
+        }
+        return Direction.NONE;
+    }
+
+    private bool IsClockWiseRotation(Direction current, Direction previous) {
+        return
+            (previous == Direction.TOP && current == Direction.RIGHT) ||
+            (previous == Direction.RIGHT && current == Direction.BOT) ||
+            (previous == Direction.BOT && current == Direction.LEFT) ||
+            (previous == Direction.LEFT && current == Direction.TOP);
     }
 }
