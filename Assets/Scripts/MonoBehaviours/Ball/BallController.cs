@@ -42,9 +42,9 @@ public class BallController : Singleton<BallController>
 
     public void SetPlayer(Player player) {
         if (player == Player.FIRST) {
-            meshRenderer.material = Resources.Load<Material>("Player1Material");
+            meshRenderer.material = MaterialsManager.Instance.GetMaterial("Player1Material");
         } else {
-            meshRenderer.material = Resources.Load<Material>("Player2Material");
+            meshRenderer.material = MaterialsManager.Instance.GetMaterial("Player2Material");
         }
     }
 

@@ -2902,6 +2902,7 @@ GameObject:
   - component: {fileID: 1624841213}
   - component: {fileID: 1624841214}
   - component: {fileID: 1624841212}
+  - component: {fileID: 1624841215}
   m_Layer: 0
   m_Name: GamePlayManager
   m_TagString: Untagged
@@ -2970,6 +2971,18 @@ MonoBehaviour:
   p1Turn: {fileID: 553771734}
   p2Turn: {fileID: 1851314088}
   gameConfig: {fileID: 11400000, guid: c846e71ef540c774f87034eda4d6fc1b, type: 2}
+--- !u!114 &1624841215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624841209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82ecb24ff76aac841b2d20645ed1848b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1815614717
 PrefabInstance:
   m_ObjectHideFlags: 0

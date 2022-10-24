@@ -32,15 +32,15 @@ public class Arrow : MonoBehaviour
         if (isActive) {
             if (isOver) {
                 meshRenderer.material = currentPlayer == Player.FIRST
-                    ? Resources.Load<Material>("Player1Material")
-                    : Resources.Load<Material>("Player2Material");
+                    ? MaterialsManager.Instance.GetMaterial("Player1Material")
+                    : MaterialsManager.Instance.GetMaterial("Player2Material");
             } else {
                 meshRenderer.material = 
-                    Resources.Load<Material>("NeutralMaterial");
+                    MaterialsManager.Instance.GetMaterial("NeutralMaterial");
             }
         } else {
             meshRenderer.material = 
-                Resources.Load<Material>("NeutralInactiveMaterial");
+                MaterialsManager.Instance.GetMaterial("NeutralInactiveMaterial");
         }
     }
 
