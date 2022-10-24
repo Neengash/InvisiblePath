@@ -8,6 +8,7 @@ public class Arrow : MonoBehaviour
     public Direction direction;
 
     bool isActive = true;
+    bool isOver = false;
     Player currentPlayer;
 
     MeshRenderer meshRenderer;
@@ -17,33 +18,51 @@ public class Arrow : MonoBehaviour
     }
 
     private void OnMouseOver() {
-        if (isActive) {
-            meshRenderer.material = currentPlayer == Player.FIRST
-                ? Resources.Load<Material>("Player1Material")
-                : Resources.Load<Material>("Player2Material");
-        }
+        isOver = true;
+        UpdateMateiral();
     }
 
     private void OnMouseExit() {
+        isOver = false;
+        UpdateMateiral();
+    }
+
+    private void UpdateMateiral() {
         if (isActive) {
-            meshRenderer.material = Resources.Load<Material>("NeutralMaterial");
+            if (isOver) {
+                meshRenderer.material = currentPlayer == Player.FIRST
+                    ? Resources.Load<Material>("Player1Material")
+                    : Resources.Load<Material>("Player2Material");
+            } else {
+                meshRenderer.material = 
+                    Resources.Load<Material>("NeutralMaterial");
+            }
+        } else {
+            meshRenderer.material = 
+                Resources.Load<Material>("NeutralInactiveMaterial");
         }
     }
 
-    private void UpdatePlayerMaterial(Player player) {
+    public void SetActiveArrow(bool isActive) {
+        this.isActive = isActive;
+        UpdateMateiral();
+    }
+
+    public void UpdatePlayerMaterial(Player player) {
         currentPlayer = player;
+        UpdateMateiral();
     }
 
     public void ArrowClicked() {
-        // Play Animation for ball
         List<Action> path = BallPath.Calculate(GamePlayManager.Instance.gameBoard, X, Y, direction);
 
+        /*
         Debug.Log($"Clicked on {X} - {Y} looking {direction}");
         foreach (Action action in path) {
             Debug.Log($"Perform {action.type} towards {action.direction}");
         }
+        */
 
-        // Ball - perform actions
         BallController.Instance.PerformActions(path, X, Y, GamePlayManager.Instance.boardConfig);
     }
 }

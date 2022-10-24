@@ -15,6 +15,10 @@ public class GamePlayManager : Singleton<GamePlayManager>
 
     Player currentTurn;
 
+    private const int
+        MIN_SCORING_POSITION = 0,
+        MAX_SCORING_POSITION = 5;
+
     public void StartGame() {
         ScoreManager.Instance.ResetScores();
 
@@ -39,6 +43,10 @@ public class GamePlayManager : Singleton<GamePlayManager>
         p1Turn.SetBackgroundColor((currentTurn == Player.FIRST) ? gameConfig.Player1Color: gameConfig.InactiveTurnColor);
         p2Turn.SetBackgroundColor((currentTurn == Player.FIRST) ? gameConfig.InactiveTurnColor : gameConfig.Player2Color);
         BallController.Instance.SetPlayer(currentTurn);
+        ArrowsManager.Instance.UpdatePlayer(currentTurn);
+        int key = scoringSpaces[scoringSpaces.Count - 1];
+        int x = key / 10; int y = key % 10;
+        ArrowsManager.Instance.UpdateAvaiableArrows(x, y);
     }
 
     public void NextTurn() {
@@ -51,8 +59,8 @@ public class GamePlayManager : Singleton<GamePlayManager>
         int x = key / 10;
         int y = key % 10;
         if (!gameBoard[x][y].isScore) {
-            x = Random.Range(1, 4);
-            y = Random.Range(1, 4);
+            x = Random.Range(MIN_SCORING_POSITION, MAX_SCORING_POSITION + 1);
+            y = Random.Range(MIN_SCORING_POSITION, MAX_SCORING_POSITION + 1);
             gameBoard[x][y].isScore = true;
             ScoreStarController.Instance.PlaceStar(x, y);
             scoringSpaces.Add(x * 10 + y);
