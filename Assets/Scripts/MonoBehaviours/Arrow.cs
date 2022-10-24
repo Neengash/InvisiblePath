@@ -7,7 +7,7 @@ public class Arrow : MonoBehaviour
     public int X, Y;
     public Direction direction;
 
-    bool isActive = true;
+    bool isActive = false;
     bool isOver = false;
     Player currentPlayer;
 
@@ -15,6 +15,7 @@ public class Arrow : MonoBehaviour
 
     private void Start() {
         meshRenderer = GetComponent<MeshRenderer>();
+        UpdateMateiral();
     }
 
     private void OnMouseOver() {
