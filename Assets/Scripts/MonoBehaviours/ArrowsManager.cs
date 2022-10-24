@@ -33,7 +33,7 @@ public class ArrowsManager : Singleton<ArrowsManager>
                 AddArrowToClosest(arrows[i]);
             } else if (newDistance < distance) {
                 for (int j = 0; j < closest.Count; j++) {
-                    arrows[j].SetActiveArrow(true);
+                    closest[j].SetActiveArrow(true);
                 }
                 closest.Clear();
                 AddArrowToClosest(arrows[i]);

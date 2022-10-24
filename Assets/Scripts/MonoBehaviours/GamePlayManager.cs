@@ -28,6 +28,10 @@ public class GamePlayManager : Singleton<GamePlayManager>
         scoringSpaces = new List<int>();
         int x = Random.Range(1, 4);
         int y = Random.Range(1, 4);
+        // TODO: TMP
+        x = 3;
+        y = 2; 
+        // END TMP
         gameBoard[x][y].isScore = true;
         ScoreStarController.Instance.PlaceStar(x, y);
         scoringSpaces.Add(x * 10 + y);
