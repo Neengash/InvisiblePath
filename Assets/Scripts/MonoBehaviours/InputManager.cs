@@ -12,7 +12,7 @@ public class InputManager : MonoBehaviour
             Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit)) {
                 Arrow arrow = hit.collider.gameObject.GetComponent<Arrow>();
-                if (arrow != null) {
+                if (arrow != null && arrow.IsActive()) {
                     arrow.ArrowClicked();
                     this.enabled = false;
                 }

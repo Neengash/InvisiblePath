@@ -53,6 +53,10 @@ public class Arrow : MonoBehaviour
         UpdateMateiral();
     }
 
+    public bool IsActive() {
+        return isActive;
+    }
+
     public void ArrowClicked() {
         List<Action> path = BallPath.Calculate(GamePlayManager.Instance.gameBoard, X, Y, direction);
 
