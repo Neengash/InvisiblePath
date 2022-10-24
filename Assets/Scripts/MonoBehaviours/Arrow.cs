@@ -7,6 +7,33 @@ public class Arrow : MonoBehaviour
     public int X, Y;
     public Direction direction;
 
+    bool isActive = true;
+    Player currentPlayer;
+
+    MeshRenderer meshRenderer;
+
+    private void Start() {
+        meshRenderer = GetComponent<MeshRenderer>();
+    }
+
+    private void OnMouseOver() {
+        if (isActive) {
+            meshRenderer.material = currentPlayer == Player.FIRST
+                ? Resources.Load<Material>("Player1Material")
+                : Resources.Load<Material>("Player2Material");
+        }
+    }
+
+    private void OnMouseExit() {
+        if (isActive) {
+            meshRenderer.material = Resources.Load<Material>("NeutralMaterial");
+        }
+    }
+
+    private void UpdatePlayerMaterial(Player player) {
+        currentPlayer = player;
+    }
+
     public void ArrowClicked() {
         // Play Animation for ball
         List<Action> path = BallPath.Calculate(GamePlayManager.Instance.gameBoard, X, Y, direction);
