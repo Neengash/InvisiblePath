@@ -26,6 +26,14 @@ public class GameFlowManager : Singleton<GameFlowManager>
         EndGameManager.EndState();
     }
 
+    public void GamePlayVsAI() {
+        GameData.Instance.vsAI = true;
+        AIController.Instance.LoadAI();
+        MainMenuManager.EndState();
+        GamePlayManager.StartState();
+        EndGameManager.EndState();
+    }
+
     public void EndGame() {
         MainMenuManager.EndState();
         GamePlayManager.EndState();

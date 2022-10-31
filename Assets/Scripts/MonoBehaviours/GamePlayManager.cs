@@ -71,7 +71,15 @@ public class GamePlayManager : Singleton<GamePlayManager>
             ? Player.SECOND
             : Player.FIRST;
         SetTurn(nextTurn);
-        playerInput.enabled = true;
+
+        if (
+            currentTurn == Player.FIRST ||
+            !GameData.Instance.vsAI
+        ) {
+            playerInput.enabled = true;
+        } else {
+            AIController.Instance.PerformTurn();
+        }
     }
 
     public void Score() {

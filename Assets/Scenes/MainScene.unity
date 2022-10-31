@@ -2308,6 +2308,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 69750375748828705, guid: dab5a87241e252b4195d87d14dc1acba, type: 3}
   m_PrefabInstance: {fileID: 1119398298}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1159451032 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8047283180285023104, guid: fa3b48e25386643458598a3c9cd46793, type: 3}
+  m_PrefabInstance: {fileID: 6720987332244219231}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1164701554 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 128072086097386375, guid: d16d7e1c136cb4a409d2a524d2f5ad49, type: 3}
@@ -2903,6 +2914,8 @@ GameObject:
   - component: {fileID: 1624841214}
   - component: {fileID: 1624841212}
   - component: {fileID: 1624841215}
+  - component: {fileID: 1624841217}
+  - component: {fileID: 1624841216}
   m_Layer: 0
   m_Name: GamePlayManager
   m_TagString: Untagged
@@ -2954,6 +2967,7 @@ MonoBehaviour:
   gameplayManager: {fileID: 1624841214}
   inputManager: {fileID: 1624841212}
   ball: {fileID: 179051915}
+  Player2Tag: {fileID: 1159451032}
 --- !u!114 &1624841214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2983,6 +2997,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82ecb24ff76aac841b2d20645ed1848b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1624841216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624841209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ea26b08a1f42248be1f2b75bc2a700, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1624841217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624841209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21c7ae98137683a42ba76300d76e973e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  easy: {fileID: 1624841216}
+  medium: {fileID: 1624841216}
+  hard: {fileID: 1624841216}
 --- !u!1001 &1815614717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3684,12 +3725,8 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2087595011424841940, guid: 60812f355cbe5cf40ad1a2823056924a, type: 3}
-      propertyPath: m_Interactable
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2087595011424841940, guid: 60812f355cbe5cf40ad1a2823056924a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2087595011424841940, guid: 60812f355cbe5cf40ad1a2823056924a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -3705,7 +3742,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2087595011424841940, guid: 60812f355cbe5cf40ad1a2823056924a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: GamePlay
+      value: GamePlayVsAI
       objectReference: {fileID: 0}
     - target: {fileID: 2087595011424841940, guid: 60812f355cbe5cf40ad1a2823056924a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -3749,7 +3786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2087595012024776906, guid: 60812f355cbe5cf40ad1a2823056924a, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2087595012024776910, guid: 60812f355cbe5cf40ad1a2823056924a, type: 3}
       propertyPath: m_Pivot.x

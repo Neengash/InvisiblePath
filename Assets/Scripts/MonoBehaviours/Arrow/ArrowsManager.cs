@@ -15,6 +15,25 @@ public class ArrowsManager : Singleton<ArrowsManager>
         closest = new List<Arrow>();
     }
 
+    public bool IsActiveArrow(int x, int y) {
+        for (int i = 0; i < arrows.Length; i++) {
+            if (arrows[i].X == x && arrows[i].Y == y) {
+                return arrows[i].IsActive();
+            }
+        }
+        return false;
+    }
+
+    public void ClickArrow(int x, int y) {
+        for (int i = 0; i < arrows.Length; i++) {
+            if (arrows[i].X == x && arrows[i].Y == y) {
+                arrows[i].ArrowClicked();
+                return ;
+            }
+        }
+        Debug.LogError($"ArrowsManagers: ClickArrow - No arrow was found with coordinates {x}-{y}");
+    }
+
     public void UpdatePlayer(Player player) {
         for (int i = 0; i < arrows.Length; i++) {
             arrows[i].UpdatePlayerMaterial(player);
