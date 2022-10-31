@@ -62,7 +62,7 @@ public class Arrow : MonoBehaviour
         List<Action> path = BallPath.Calculate(GamePlayManager.Instance.gameBoard, X, Y, direction, out List<int> visitedKeys);
 
         if (GameData.Instance.vsAI) {
-            int currentArrow = X * 10 + Y;
+            int currentArrow = SpaceKeyHelper.GetKeyFromSpace(X, Y);
             AIController.Instance.AddKnowledge(currentArrow, visitedKeys);
         }
 

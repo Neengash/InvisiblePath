@@ -19,6 +19,10 @@ public class GamePlayManager : Singleton<GamePlayManager>
         MIN_SCORING_POSITION = 0,
         MAX_SCORING_POSITION = 5;
 
+    public int GetCurrentScoringSpace() {
+        return scoringSpaces[scoringSpaces.Count - 1];
+    }
+
     public void StartGame() {
         ScoreManager.Instance.ResetScores();
 
@@ -30,7 +34,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
         int y = Random.Range(MIN_SCORING_POSITION, MAX_SCORING_POSITION);
         gameBoard[x][y].isScore = true;
         ScoreStarController.Instance.PlaceStar(x, y);
-        scoringSpaces.Add(x * 10 + y);
+        scoringSpaces.Add(SpaceKeyHelper.GetKeyFromSpace(x, y));
         Debug.Log($"New Scoring Space ( {x} , {y} )");
 
         SetTurn(Player.FIRST);
@@ -45,7 +49,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
         BallController.Instance.SetPlayer(currentTurn);
         ArrowsManager.Instance.UpdatePlayer(currentTurn);
         int key = scoringSpaces[scoringSpaces.Count - 1];
-        int x = key / 10; int y = key % 10;
+        SpaceKeyHelper.GetSpaceFromKey(key, out int x, out int y);
         ArrowsManager.Instance.UpdateAvaiableArrows(x, y);
     }
 
@@ -63,7 +67,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
             y = Random.Range(MIN_SCORING_POSITION, MAX_SCORING_POSITION + 1);
             gameBoard[x][y].isScore = true;
             ScoreStarController.Instance.PlaceStar(x, y);
-            scoringSpaces.Add(x * 10 + y);
+            scoringSpaces.Add(SpaceKeyHelper.GetKeyFromSpace(x, y));
             Debug.Log($"New Scoring Space ( {x} , {y} )");
         }
 
@@ -84,8 +88,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
 
     public void Score() {
         int key = scoringSpaces[scoringSpaces.Count - 1];
-        int x = key / 10;
-        int y = key % 10;
+        SpaceKeyHelper.GetSpaceFromKey(key, out int x, out int y);
         gameBoard[x][y].isScore = false;
 
         ScoreManager.Instance.Score(currentTurn);

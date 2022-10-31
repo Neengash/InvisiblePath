@@ -100,7 +100,7 @@ public class BallPath
         int y,
         Direction direction
     ) {
-        int key = x * 10 + y;
+        int key = SpaceKeyHelper.GetKeyFromSpace(x, y);
         if (visited.ContainsKey(key)) {
             Direction[] directions = visited[key];
             int i = 0;
