@@ -2916,6 +2916,7 @@ GameObject:
   - component: {fileID: 1624841215}
   - component: {fileID: 1624841217}
   - component: {fileID: 1624841216}
+  - component: {fileID: 1624841219}
   - component: {fileID: 1624841218}
   m_Layer: 0
   m_Name: GamePlayManager
@@ -3022,9 +3023,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c7ae98137683a42ba76300d76e973e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  easy: {fileID: 1624841218}
-  medium: {fileID: 1624841218}
-  hard: {fileID: 1624841218}
+  easy: {fileID: 1624841219}
+  medium: {fileID: 1624841219}
+  hard: {fileID: 1624841219}
 --- !u!114 &1624841218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,6 +3036,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 635ec43f01b4ba547bb1eab81a046bb8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1624841219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624841209}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb7284049fd5ed40be69c13cfc21e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1815614717
