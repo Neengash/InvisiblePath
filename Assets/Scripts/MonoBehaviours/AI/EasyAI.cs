@@ -5,20 +5,6 @@ using UnityEngine;
 public class EasyAI : AIDifficulty
 {
     public override void AITurn() {
-        StartCoroutine(AITurnCoroutine());
-    }
-
-    private IEnumerator AITurnCoroutine() {
-        yield return StartCoroutine(PerformThinking());
-        StartCoroutine(SelectArrow());
-    }
-
-    private IEnumerator PerformThinking() {
-        // TODO
-        yield return new WaitForSeconds(2f);
-    }
-
-    private IEnumerator SelectArrow() {
         int x = 0, y = 0;
         int iterations = 0;
         do {
@@ -26,8 +12,6 @@ public class EasyAI : AIDifficulty
         } while ( !ArrowsManager.Instance.IsActiveArrow(x, y) && iterations++ < 10);
 
         ArrowsManager.Instance.ClickArrow(x, y);
-
-        yield return null;
     }
 
     private void ChooseArrowCoordinates(ref int x, ref int y) {
