@@ -63,14 +63,10 @@ public class BallPath
 
         if (FinishedPath(action)) { return; }
 
-        if (
-            MovedOutsideBoard(action, x, y, board.Length) ||
-            CheckLoopingPath(ref path, ref visited, x, y, direction)
-        ) {
+        if (MovedOutsideBoard(action, x, y, board.Length)) {
             path.Add(new Action(ActionType.END));
+            return;
         }
-
-        if (FinishedPath(path[path.Count-1])) { return; }
 
         CellAction(board, x, y, action.direction, ref path, ref visited);
     }
@@ -93,6 +89,7 @@ public class BallPath
         return action.type == ActionType.TRANSLATE && (x < 0 || x >= boardSize || y < 0 || y >= boardSize);
     }
     
+    // OLD CODE
     private static bool CheckLoopingPath(
         ref List<Action> path,
         ref Dictionary<int, Direction[]> visited,
