@@ -9,6 +9,8 @@ public class GameFlowManager : Singleton<GameFlowManager>
     [SerializeField] GameState GamePlayManager;
     [SerializeField] GameState EndGameManager;
 
+    [SerializeField] GameObject MainMenuPanel, SettingsPanel;
+
     private void Start() {
         Application.targetFrameRate = 60;
         MainMenu();
@@ -21,13 +23,39 @@ public class GameFlowManager : Singleton<GameFlowManager>
     }
 
     public void GamePlay() {
+        GameData.Instance.vsAI = false;
         MainMenuManager.EndState();
         GamePlayManager.StartState();
         EndGameManager.EndState();
     }
 
-    public void GamePlayVsAI() {
+    public void DifficultySelection() {
         GameData.Instance.vsAI = true;
+        MainMenuPanel.SetActive(false);
+        SettingsPanel.SetActive(true);
+    }
+
+    public void EasyDifficulty() {
+        GameData.Instance.difficulty = Difficulty.EASY;
+        GamePlayVsAI();
+    }
+
+    public void MediumDifficulty() {
+        GameData.Instance.difficulty = Difficulty.MEDIUM;
+        GamePlayVsAI();
+    }
+
+    public void HardDifficulty() {
+        GameData.Instance.difficulty = Difficulty.HARD;
+        GamePlayVsAI();
+    }
+
+    public void BackToMain() {
+        MainMenuPanel.SetActive(true);
+        SettingsPanel.SetActive(false);
+    }
+
+    private void GamePlayVsAI() {
         AIController.Instance.LoadAI();
         MainMenuManager.EndState();
         GamePlayManager.StartState();
