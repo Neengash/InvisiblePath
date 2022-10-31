@@ -60,8 +60,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
         }
 
         int key = scoringSpaces[scoringSpaces.Count - 1];
-        int x = key / 10;
-        int y = key % 10;
+        SpaceKeyHelper.GetSpaceFromKey(key, out int x, out int y);
         if (!gameBoard[x][y].isScore) {
             x = Random.Range(MIN_SCORING_POSITION, MAX_SCORING_POSITION + 1);
             y = Random.Range(MIN_SCORING_POSITION, MAX_SCORING_POSITION + 1);

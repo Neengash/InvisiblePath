@@ -34,6 +34,9 @@ public class AIController : Singleton<AIController>
     public void AddKnowledge(int key, List<int> visited) {
         if (knowledge == null) { knowledge = new Dictionary<int, List<int>>(); }
 
-        knowledge.Add(key, visited);
+        if (!knowledge.ContainsKey(key)) {
+            knowledge.Add(key, visited);
+        }
+
     }
 }
