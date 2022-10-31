@@ -7,44 +7,14 @@ public class DifficultAI : AIDifficulty
     public override void AITurn() {
         int scoringSpace = GamePlayManager.Instance.GetCurrentScoringSpace();
 
-        // If has knowledge of scoring space && arrow isActive --> throw ball
         List<int> validArrows = GetValidArrowsFromKnowledge(scoringSpace);
-        
-        for (int i = 0; i < validArrows.Count; i++) {
-            SpaceKeyHelper.GetSpaceFromKey(validArrows[i], out int x, out int y);
-            if (ArrowsManager.Instance.IsActiveArrow(x, y)) {
-                ArrowsManager.Instance.ClickArrow(x, y);
-                return;
-            }
-        }
+        if (TryClickArrow(validArrows)) { return; }
 
-        // Else choose an arrow with hight probability
-            // same row and column --> from closest to farthest if no knowledge from them.
         List<int> RowColumnArrows = GetValidArrowsFromRowColumnWithoutKnowledge(scoringSpace);
+        if (TryClickArrow(RowColumnArrows)) { return; }
 
-        for (int i = 0; i < RowColumnArrows.Count; i++) {
-            SpaceKeyHelper.GetSpaceFromKey(RowColumnArrows[i], out int x, out int y);
-            if (ArrowsManager.Instance.IsActiveArrow(x, y)) {
-                ArrowsManager.Instance.ClickArrow(x, y);
-                return;
-            }
-        }
-
-        // Else --> Some random arrow of which it has no knowledge.
-
-        // Get a list of all arrows + Remove arrows from knowledge
-        // Randomize list contents
-        // First active arrow
-
-        List<int> OtherArrows = GetNoKnowledgeArrows();
-
-        for (int i = 0; i < OtherArrows.Count; i++) {
-            SpaceKeyHelper.GetSpaceFromKey(OtherArrows[i], out int x, out int y);
-            if (ArrowsManager.Instance.IsActiveArrow(x, y)) {
-                ArrowsManager.Instance.ClickArrow(x, y);
-                return;
-            }
-        }
+        List<int> otherArrows = GetNoKnowledgeArrows();
+        TryClickArrow(otherArrows);
     }
 
     private List<int> GetValidArrowsFromKnowledge(int scoringSpace) {
@@ -84,13 +54,11 @@ public class DifficultAI : AIDifficulty
 
     private List<int> GetNoKnowledgeArrows() {
         Dictionary<int, List<int>> knowledge = AIController.Instance.knowledge;
-
         List<int> allArrows = GenerateAllArrows();
 
         foreach (KeyValuePair<int, List<int>> entry in knowledge) {
             allArrows.Remove(entry.Key);
         }
-
         Randomize(ref allArrows);
 
         return allArrows;
@@ -116,5 +84,16 @@ public class DifficultAI : AIDifficulty
             allArrows[i] = allArrows[randomIdx];
             allArrows[randomIdx] = aux;
         }
+    }
+
+    private bool TryClickArrow(List<int> arrowKeys) {
+        for (int i = 0; i < arrowKeys.Count; i++) {
+            SpaceKeyHelper.GetSpaceFromKey(arrowKeys[i], out int x, out int y);
+            if (ArrowsManager.Instance.IsActiveArrow(x, y)) {
+                ArrowsManager.Instance.ClickArrow(x, y);
+                return true;
+            }
+        }
+        return false;
     }
 }

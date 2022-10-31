@@ -25,10 +25,16 @@ public class AIController : Singleton<AIController>
                 currentAI = easy;
                 break;
         }
+        ClearKnowledge();
     }
 
     public void PerformTurn() {
         currentAI.AITurn();
+    }
+
+    private void ClearKnowledge() {
+        if (knowledge == null) { knowledge = new Dictionary<int, List<int>>(); }
+        else { knowledge.Clear(); }
     }
 
     public void AddKnowledge(int key, List<int> visited) {
