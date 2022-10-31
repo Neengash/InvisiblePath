@@ -20,6 +20,9 @@ public class GameFlowManager : Singleton<GameFlowManager>
         MainMenuManager.StartState();
         GamePlayManager.EndState();
         EndGameManager.EndState();
+
+        MainMenuPanel.SetActive(true);
+        SettingsPanel.SetActive(false);
     }
 
     public void GamePlay() {
@@ -66,5 +69,12 @@ public class GameFlowManager : Singleton<GameFlowManager>
         MainMenuManager.EndState();
         GamePlayManager.EndState();
         EndGameManager.StartState();
+    }
+
+    public void PlayAgain() {
+        AIController.Instance.LoadAI();
+        MainMenuManager.EndState();
+        GamePlayManager.StartState();
+        EndGameManager.EndState();
     }
 }
