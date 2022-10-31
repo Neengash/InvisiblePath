@@ -57,7 +57,9 @@ public class BallPath
         ref List<Action> path,
         ref Dictionary<int, Direction[]> visited
     ) {
-        visited.Add(SpaceKeyHelper.GetKeyFromSpace(x, y), null);
+        if (!visited.ContainsKey(SpaceKeyHelper.GetKeyFromSpace(x, y))) {
+            visited.Add(SpaceKeyHelper.GetKeyFromSpace(x, y), null);
+        }
         Action action = board[x][y].Enter(Reverse(direction));
         path.Add(action);
         UpdatePosition(ref x, ref y, action.direction);

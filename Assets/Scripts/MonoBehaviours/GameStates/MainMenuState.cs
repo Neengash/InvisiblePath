@@ -14,8 +14,6 @@ public class MainMenuState : GameState
 
     public override void StartState() {
         MainMenuCanvas.SetActive(true);
-        SettingsPanel.SetActive(false);
-        MainPanel.SetActive(true);
         GameData.Instance.Reset();
     }
 }

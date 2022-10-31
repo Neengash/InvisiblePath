@@ -24,6 +24,8 @@ public class GamePlayManager : Singleton<GamePlayManager>
     }
 
     public void StartGame() {
+        if (GameData.Instance.vsAI) { AIController.Instance.LoadAI(); }
+
         ScoreManager.Instance.ResetScores();
 
         CellData[][] boardData = BoardData.Generate(boardConfig.boardSize);
