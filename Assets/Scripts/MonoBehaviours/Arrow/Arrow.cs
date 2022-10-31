@@ -30,7 +30,7 @@ public class Arrow : MonoBehaviour
 
     private void UpdateMateiral() {
         if (isActive) {
-            if (isOver) {
+            if (isOver && !IsAITurn()) {
                 meshRenderer.material = currentPlayer == Player.FIRST
                     ? MaterialsManager.Instance.GetMaterial("Player1Material")
                     : MaterialsManager.Instance.GetMaterial("Player2Material");
@@ -42,6 +42,10 @@ public class Arrow : MonoBehaviour
             meshRenderer.material = 
                 MaterialsManager.Instance.GetMaterial("NeutralInactiveMaterial");
         }
+    }
+
+    private bool IsAITurn() {
+        return currentPlayer == Player.SECOND && GameData.Instance.vsAI;
     }
 
     public void SetActiveArrow(bool isActive) {
