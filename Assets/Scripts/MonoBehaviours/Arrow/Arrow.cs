@@ -59,7 +59,12 @@ public class Arrow : MonoBehaviour
     }
 
     public void ArrowClicked() {
-        List<Action> path = BallPath.Calculate(GamePlayManager.Instance.gameBoard, X, Y, direction);
+        List<Action> path = BallPath.Calculate(GamePlayManager.Instance.gameBoard, X, Y, direction, out List<int> visitedKeys);
+
+        if (GameData.Instance.vsAI) {
+            int currentArrow = X * 10 + Y;
+            AIController.Instance.AddKnowledge(currentArrow, visitedKeys);
+        }
 
         /*
         Debug.Log($"Clicked on {X} - {Y} looking {direction}");

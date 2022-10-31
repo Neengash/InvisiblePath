@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BallPath
 {
-    public static List<Action> Calculate(GameCell[][] board, int x, int y, Direction direction) {
+    public static List<Action> Calculate(GameCell[][] board, int x, int y, Direction direction, out List<int> visitedKeys) {
         List<Action> path = new List<Action>();
         Dictionary<int, Direction[]> visited = new Dictionary<int, Direction[]>();
 
@@ -14,8 +14,24 @@ public class BallPath
 
         CellAction(board, x, y, direction, ref path, ref visited);
 
+        visitedKeys = GetCleanVisitedKeys(visited);
+
         return path;
     }
+
+    private static List<int> GetCleanVisitedKeys(Dictionary<int, Direction[]> visited) {
+        List<int> visitedKeysDirty = new List<int>(visited.Keys);
+        List<int> visitedKeys = new List<int>();
+
+        for (int i = 0; i < visitedKeysDirty.Count; i++) {
+            if (!visitedKeys.Contains(visitedKeysDirty[i])) {
+                visitedKeys.Add(visitedKeysDirty[i]);
+            }
+        }
+
+        return visitedKeys;
+    }
+        
 
     private static void UpdatePosition(ref int x, ref int y, Direction direction) {
         switch (direction) {

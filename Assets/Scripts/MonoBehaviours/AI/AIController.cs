@@ -8,7 +8,7 @@ public class AIController : Singleton<AIController>
     [SerializeField] AIDifficulty easy, medium, hard;
     AIDifficulty currentAI;
 
-    // Learned Path Information Variable
+    public Dictionary<int, List<int>> knowledge { get; private set; }
 
     public void LoadAI() {
         switch (GameData.Instance.difficulty) {
@@ -29,5 +29,11 @@ public class AIController : Singleton<AIController>
 
     public void PerformTurn() {
         currentAI.AITurn();
+    }
+
+    public void AddKnowledge(int key, List<int> visited) {
+        if (knowledge == null) { knowledge = new Dictionary<int, List<int>>(); }
+
+        knowledge.Add(key, visited);
     }
 }
