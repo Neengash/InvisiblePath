@@ -255,6 +255,7 @@ MonoBehaviour:
   winnerTags:
   - {fileID: 3252727357092661195}
   - {fileID: 2911204907369318246}
+  player2Tag: {fileID: 4947010456134681582}
 --- !u!1 &128072086230525115
 GameObject:
   m_ObjectHideFlags: 0
