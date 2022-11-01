@@ -19,17 +19,20 @@ public class GameUIManager : MonoBehaviour
         confirmationPopUp.SetActive(true);
         Time.timeScale = 0;
         GamePlayManager.Instance.PlayerInputSetEnabled(false);
+        SoundManager.Instance.Play();
     }
 
     public void CancelOption() {
         confirmationPopUp.SetActive(false);
         Time.timeScale = 1;
         GamePlayManager.Instance.PlayerInputSetEnabled(true);
+        SoundManager.Instance.Play();
     }
 
     public void ExitOption() {
         Time.timeScale = 1;
         GamePlayManager.Instance.PlayerInputSetEnabled(true);
         GameFlowManager.Instance.MainMenu();
+        SoundManager.Instance.Play();
     }
 }

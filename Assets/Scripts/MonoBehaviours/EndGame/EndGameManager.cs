@@ -22,9 +22,11 @@ public class EndGameManager : MonoBehaviour
 
     public void PlayAgain() {
         GameFlowManager.Instance.GamePlay();
+        SoundManager.Instance.Play();
     }
 
     public void MainMenu() {
         GameFlowManager.Instance.MainMenu();
+        SoundManager.Instance.Play();
     }
 }
