@@ -44,7 +44,6 @@ public class GamePlayManager : Singleton<GamePlayManager>
         gameBoard[x][y].isScore = true;
         ScoreStarController.Instance.PlaceStar(x, y);
         scoringSpaces.Add(SpaceKeyHelper.GetKeyFromSpace(x, y));
-        Debug.Log($"New Scoring Space ( {x} , {y} )");
 
         SetTurn(Player.FIRST);
 
@@ -76,7 +75,6 @@ public class GamePlayManager : Singleton<GamePlayManager>
             gameBoard[x][y].isScore = true;
             ScoreStarController.Instance.PlaceStar(x, y);
             scoringSpaces.Add(SpaceKeyHelper.GetKeyFromSpace(x, y));
-            Debug.Log($"New Scoring Space ( {x} , {y} )");
         }
 
         Player nextTurn = currentTurn == Player.FIRST

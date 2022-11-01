@@ -35,6 +35,7 @@ public class GameLoader : MonoBehaviour
             Debug.Log(rows[i]);
         }
     }
+
     private void PrintGameBoard(GameCell[][] board) {
         string[] rows = new string[board.Length];
         for (int i = 0; i < board.Length; i++) {

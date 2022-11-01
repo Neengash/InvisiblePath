@@ -36,7 +36,6 @@ public class BallController : Singleton<BallController>
         PlaceBall(x, y);
         BallScaleTo0();
 
-        Debug.Log("START ACTIONS");
         PerformNextAction();
     }
 
@@ -68,18 +67,15 @@ public class BallController : Singleton<BallController>
     private void PerformNextAction() {
         switch (path[actionIdx].type) {
             case ActionType.SPAWN:
-                Debug.Log("START ACTION");
                 StartCoroutine(PerformSpawn());
                 ballSounds.PlayStart();
                 break;
             case ActionType.TRANSLATE:
-                Debug.Log($"TRANSLATE ACTION - {path[actionIdx].direction}");
                 StartCoroutine(PerformTranslate());
                 ballSounds.PlayMovement();
                 CheckRotationEffect();
                 break;
             case ActionType.END:
-                Debug.Log("END ACTION");
                 StartCoroutine(PerformEnd());
                 ballSounds.PlayEnd();
                 break;

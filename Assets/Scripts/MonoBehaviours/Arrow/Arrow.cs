@@ -71,13 +71,6 @@ public class Arrow : MonoBehaviour
             AIController.Instance.AddKnowledge(currentArrow, visitedKeys);
         }
 
-        /*
-        Debug.Log($"Clicked on {X} - {Y} looking {direction}");
-        foreach (Action action in path) {
-            Debug.Log($"Perform {action.type} towards {action.direction}");
-        }
-        */
-
         BallController.Instance.PerformActions(path, X, Y, GamePlayManager.Instance.boardConfig);
     }
 }
