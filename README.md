@@ -18,7 +18,7 @@ Sounds from freesound
 * Menu interactions [Billiard ball clack - By Za-Games](https://freesound.org/people/Za-Games/sounds/539854/)
 
 Background Music
-"Midnight Tale" Kevin MacLeod (incompetech.com)
+* "Midnight Tale" Kevin MacLeod (incompetech.com)
 Licensed under Creative Commons: By Attribution 4.0 License
 http://creativecommons.org/licenses/by/4.0/
 
