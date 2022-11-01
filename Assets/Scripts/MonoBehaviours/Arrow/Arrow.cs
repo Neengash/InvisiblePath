@@ -29,6 +29,7 @@ public class Arrow : MonoBehaviour
     }
 
     private void UpdateMateiral() {
+        if (meshRenderer == null) { meshRenderer = GetComponent<MeshRenderer>(); }
         if (isActive) {
             if (isOver && !IsAITurn()) {
                 meshRenderer.material = currentPlayer == Player.FIRST
