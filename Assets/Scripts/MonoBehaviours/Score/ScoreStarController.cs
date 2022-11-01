@@ -11,7 +11,8 @@ public class ScoreStarController : Singleton<ScoreStarController>
         show = "Show",
         hide = "Hide";
 
-    void Start() {
+    protected override void Awake() {
+        base.Awake();
         animator = GetComponent<Animator>();
     }
 

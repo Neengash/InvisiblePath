@@ -21,7 +21,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
         MAX_SCORING_POSITION = 5;
 
     private void Start() {
-        ball.BallScaleTo0();
+        BallController.Instance.BallScaleTo0();
         if (GameData.Instance.vsAI) { AIController.Instance.LoadAI(); }
         ScoreManager.Instance.ResetScores();
         CellData[][] boardData = BoardData.Generate(boardConfig.boardSize);
@@ -44,21 +44,25 @@ public class GamePlayManager : Singleton<GamePlayManager>
         gameBoard[x][y].isScore = true;
         ScoreStarController.Instance.PlaceStar(x, y);
         scoringSpaces.Add(SpaceKeyHelper.GetKeyFromSpace(x, y));
-
         SetTurn(Player.FIRST);
-
         playerInput.enabled = true;
     }
 
     private void SetTurn(Player newTurn) {
+        Debug.Log("Inside SetTurn");
         currentTurn = newTurn;
         p1Turn.SetBackgroundColor((currentTurn == Player.FIRST) ? gameConfig.Player1Color: gameConfig.InactiveTurnColor);
         p2Turn.SetBackgroundColor((currentTurn == Player.FIRST) ? gameConfig.InactiveTurnColor : gameConfig.Player2Color);
+        Debug.Log("Set player backgrounds");
         BallController.Instance.SetPlayer(currentTurn);
+        Debug.Log("Set ball color");
         ArrowsManager.Instance.UpdatePlayer(currentTurn);
+        Debug.Log("Set arrows materials");
         int key = scoringSpaces[scoringSpaces.Count - 1];
         SpaceKeyHelper.GetSpaceFromKey(key, out int x, out int y);
+        Debug.Log("Called spacekeyhelper");
         ArrowsManager.Instance.UpdateAvaiableArrows(x, y);
+        Debug.Log("Updated Available Arrows");
     }
 
     public void NextTurn() {

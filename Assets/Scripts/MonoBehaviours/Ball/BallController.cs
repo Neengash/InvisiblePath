@@ -17,7 +17,8 @@ public class BallController : Singleton<BallController>
 
     private bool alreadyScored;
 
-    private void Start() {
+    protected override void Awake() {
+        base.Awake();
         ballSounds = GetComponent<BallSounds>();
         meshRenderer = GetComponentInChildren<MeshRenderer>();
     }
