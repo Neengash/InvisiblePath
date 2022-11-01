@@ -10,7 +10,8 @@ public class ArrowsManager : Singleton<ArrowsManager>
     private const int MAX_DISTANCE = 12;
     private List<Arrow> closest;
 
-    private void Start() {
+    protected override void Awake() {
+        base.Awake();
         arrows = GetComponentsInChildren<Arrow>();
         closest = new List<Arrow>();
     }

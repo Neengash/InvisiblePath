@@ -10,6 +10,7 @@ public class GamePlayManager : Singleton<GamePlayManager>
     [SerializeField] InputManager playerInput;
     [SerializeField] PlayerTurnController p1Turn, p2Turn;
     [SerializeField] GameConfigScriptable gameConfig;
+    [SerializeField] BallController ball;
     public GameCell[][] gameBoard;
     List<int> scoringSpaces;
 
@@ -18,6 +19,12 @@ public class GamePlayManager : Singleton<GamePlayManager>
     private const int
         MIN_SCORING_POSITION = 0,
         MAX_SCORING_POSITION = 5;
+
+    private void Start() {
+        ball.BallScaleTo0();
+        if (GameData.Instance.vsAI) { AIController.Instance.LoadAI(); }
+        StartGame();
+    }
 
     public int GetCurrentScoringSpace() {
         return scoringSpaces[scoringSpaces.Count - 1];
@@ -28,8 +35,6 @@ public class GamePlayManager : Singleton<GamePlayManager>
     }
 
     public void StartGame() {
-        if (GameData.Instance.vsAI) { AIController.Instance.LoadAI(); }
-
         ScoreManager.Instance.ResetScores();
 
         CellData[][] boardData = BoardData.Generate(boardConfig.boardSize);

@@ -1605,6 +1605,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   confirmationPopUp: {fileID: 696615833542957176}
+  Player2Tag: {fileID: 8047283180285023104}
 --- !u!1 &6720987334073854115
 GameObject:
   m_ObjectHideFlags: 0

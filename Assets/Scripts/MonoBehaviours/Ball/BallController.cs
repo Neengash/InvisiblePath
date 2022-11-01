@@ -61,7 +61,7 @@ public class BallController : Singleton<BallController>
             );
     }
 
-    private void BallScaleTo0() {
+    public void BallScaleTo0() {
         transform.localScale = Vector3.zero;
     }
 
