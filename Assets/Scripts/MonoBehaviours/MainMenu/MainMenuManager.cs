@@ -7,7 +7,8 @@ public class MainMenuManager : Singleton<MainMenuManager>
 {
     [SerializeField] GameObject mainPanel, settingsPanel;
 
-    private void OnEnable() {
+    private void Start() {
+        GameData.Instance.Reset();
         mainPanel.SetActive(true);
         settingsPanel.SetActive(false);
     }
