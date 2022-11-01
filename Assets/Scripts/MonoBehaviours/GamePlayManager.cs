@@ -23,6 +23,9 @@ public class GamePlayManager : Singleton<GamePlayManager>
     private void Start() {
         ball.BallScaleTo0();
         if (GameData.Instance.vsAI) { AIController.Instance.LoadAI(); }
+        ScoreManager.Instance.ResetScores();
+        CellData[][] boardData = BoardData.Generate(boardConfig.boardSize);
+        gameBoard = GameBoard.Generate(boardData);
         StartGame();
     }
 
@@ -35,11 +38,6 @@ public class GamePlayManager : Singleton<GamePlayManager>
     }
 
     public void StartGame() {
-        ScoreManager.Instance.ResetScores();
-
-        CellData[][] boardData = BoardData.Generate(boardConfig.boardSize);
-        gameBoard = GameBoard.Generate(boardData);
-
         scoringSpaces = new List<int>();
         int x = Random.Range(MIN_SCORING_POSITION, MAX_SCORING_POSITION);
         int y = Random.Range(MIN_SCORING_POSITION, MAX_SCORING_POSITION);

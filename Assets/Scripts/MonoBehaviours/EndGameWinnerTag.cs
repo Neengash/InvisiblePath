@@ -10,14 +10,11 @@ public class EndGameWinnerTag : MonoBehaviour
     const string Winner = "¡¡ WINNER !!";
     const string Loser = " ";
 
-    void Start() {
+    void Awake() {
         winnerTag = GetComponent<TextMeshProUGUI>();
     }
 
     public void ReloadData() {
-        if (winnerTag == null) {
-            winnerTag = GetComponent<TextMeshProUGUI>();
-        }
         winnerTag.text = ScoreManager.Instance.IsWinner(player)
             ? Winner
             : Loser;

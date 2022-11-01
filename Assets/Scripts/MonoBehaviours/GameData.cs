@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Feto;
 
-public class GameData : Singleton<GameData>
+public class GameData : SingletonPersistent<GameData>
 {
     public bool vsAI = false;
     public Difficulty difficulty;
