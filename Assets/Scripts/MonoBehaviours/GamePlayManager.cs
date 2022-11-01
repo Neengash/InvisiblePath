@@ -23,6 +23,10 @@ public class GamePlayManager : Singleton<GamePlayManager>
         return scoringSpaces[scoringSpaces.Count - 1];
     }
 
+    public void PlayerInputSetEnabled(bool enable) {
+        playerInput.enabled = enable;
+    }
+
     public void StartGame() {
         if (GameData.Instance.vsAI) { AIController.Instance.LoadAI(); }
 

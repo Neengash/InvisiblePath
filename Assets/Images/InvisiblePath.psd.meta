@@ -208,7 +208,7 @@ TextureImporter:
         width: 100
         height: 100
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -216,6 +216,27 @@ TextureImporter:
       bones: []
       spriteID: 087dcec345542994b9327c68326b2527
       internalID: -2060754832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: InvisiblePath_4
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 0
+        width: 100
+        height: 100
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8235c8b0d9fbdb048a9662791fc4433c
+      internalID: -808676844
       vertices: []
       indices: 
       edges: []
@@ -233,6 +254,7 @@ TextureImporter:
     nameFileIdTable:
       RotationEffect: -2060754832
       InvisiblePath_0: -832651209
+      InvisiblePath_4: -808676844
       InvisiblePath_2: 669300346
       InvisiblePath_1: 1715081165
       InvisiblePath_3: 1184092715
